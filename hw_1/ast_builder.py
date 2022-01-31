@@ -11,15 +11,13 @@ class Tree:
 
     def __init__(self):
         self.children = []
-        self.data = None
+        self.data = {'name': '', 'type': '', 'code': '', 'node': None, 'node_obj': None}
         self.tree_id = str(Tree.tree_id_counter)
         Tree.tree_id_counter += 1
 
     def print(self, n=0):
-        self.data['name'] = self.data.get('name', '')
-        self.data['type'] = self.data.get('type', '')
-        self.data['code'] = self.data.get('code', '')
-        print(f"{n}. name: {self.data['name']}, type: {self.data['type']}, code: {self.data['code']}")
+        print(
+            f"{n}. name: {self.data['name']}, type: {self.data['type']}, code: {self.data['code']}, node: {self.data['node']}")
         for node in self.children:
             if node is not None:
                 node.print(n + 1)
@@ -28,7 +26,7 @@ class Tree:
         self.children.append(val)
 
     def add_to_graph(self, graph):
-        label = self.data['name']
+        label = self.get_label()
         graph.node(self.tree_id, label=label)
 
         for child in self.children:
@@ -38,17 +36,37 @@ class Tree:
     def calc_color(self):
         pass
 
+    def get_label(self):
+        name = self.data['name']
+        type_ = self.data['type']
+        node_obj = self.data["node_obj"]
+        if type_ == 'Name':
+            type_ += f': {node_obj.id}'
+        if type_ == 'arg':
+            type_ += f': {node_obj.arg}'
+        if type_ == 'Constant':
+            type_ += f': {node_obj.value}'
+
+        if name:
+            if type_:
+                return f'{name}:\n{type_}'
+            return name
+        return type_
+
 
 class v(ast.NodeVisitor):
     def generic_visit(self, node):
         tree = Tree()
-        tree.data = {"type": type(node).__name__, "code": ast.unparse(node), 'node': node}
+        tree.data['type'] = type(node).__name__
+        tree.data['code'] = ast.unparse(node)
+        tree.data['node'] = ast.dump(node)
+        tree.data['node_obj'] = node
         for field, value in ast.iter_fields(node):
             if field == 'ctx':
                 continue
             if isinstance(value, list):
                 child_tree = Tree()
-                child_tree.data = {'name': field}
+                child_tree.data['name'] = field
                 for item in value:
                     if isinstance(item, AST):
                         child_tree.append(self.visit(item))
