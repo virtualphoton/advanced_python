@@ -11,35 +11,25 @@ class Tree:
 
     def __init__(self):
         self.children = []
-        self.data = {'name': '', 'type': '', 'code': '', 'node': None, 'node_obj': None}
+        self.data = {'name': '', 'type': '', 'node_obj': None}
         self.tree_id = str(Tree.tree_id_counter)
         Tree.tree_id_counter += 1
-
-    def print(self, n=0):
-        print(
-            f"{n}. name: {self.data['name']}, type: {self.data['type']}, code: {self.data['code']}, node: {self.data['node']}")
-        for node in self.children:
-            if node is not None:
-                node.print(n + 1)
 
     def append(self, val):
         self.children.append(val)
 
-    def add_to_graph(self, graph):
-        label = self.get_label()
-        graph.node(self.tree_id, label=label)
 
-        for child in self.children:
-            graph.edge(self.tree_id, child.tree_id)
-            child.add_to_graph(graph)
+class GraphCreator:
+    """
+    class that builds and shows tree-graph
+    """
+    def __init__(self, filename):
+        self.graph = graphviz.Digraph(filename=filename)
 
-    def calc_color(self):
-        pass
-
-    def get_label(self):
-        name = self.data['name']
-        type_ = self.data['type']
-        node_obj = self.data["node_obj"]
+    def get_label(self, tree):
+        name = tree.data['name']
+        type_ = tree.data['type']
+        node_obj = tree.data["node_obj"]
         if type_ == 'Name':
             type_ += f': {node_obj.id}'
         if type_ == 'arg':
@@ -53,13 +43,58 @@ class Tree:
             return name
         return type_
 
+    def get_color(self, tree):
+        name = tree.data['name']
+        type_ = tree.data['type']
+        colors_by_type = {
+            # vars and constants
+            'Constant': 'darkorange',
+            'Name': 'orange',
+            'arg': 'orange',
+            # operators
+            'BinOp': 'pink',
+            'Eq': 'red',
+            'Assign': 'orchid',
+            # other
+            'If': 'green',
+            'For': 'green',
+            'Return': 'dodgerblue',
+            'Subscript': 'hotpink'
+        }
+        colors_by_name = {
+            'func': 'deeppink',
+            # operators
+            'ops': 'pink',
+            'op': 'red'
+        }
+        if name in colors_by_name:
+            return colors_by_name[name]
+        if type_ in colors_by_type:
+            return colors_by_type[type_]
+        if not len(tree.children):
+            return 'dimgrey'
+        return 'lightgrey'
 
-class v(ast.NodeVisitor):
+    def add_to_graph(self, tree):
+        label = self.get_label(tree)
+        color = self.get_color(tree)
+        self.graph.node(tree.tree_id, label=label, style='filled', color=color)
+
+        for child in tree.children:
+            self.graph.edge(tree.tree_id, child.tree_id)
+            self.add_to_graph(child)
+
+    def view(self):
+        self.graph.view()
+
+
+class Visitor(ast.NodeVisitor):
+    """
+    class that visits AST's nodes and saves info about them into a tree structure
+    """
     def generic_visit(self, node):
         tree = Tree()
         tree.data['type'] = type(node).__name__
-        tree.data['code'] = ast.unparse(node)
-        tree.data['node'] = ast.dump(node)
         tree.data['node_obj'] = node
         for field, value in ast.iter_fields(node):
             if field == 'ctx':
@@ -84,19 +119,14 @@ class v(ast.NodeVisitor):
 
 def main():
     ast_obj = ast.parse(code)
-    vis = v()
+    vis = Visitor()
     tree = vis.visit(ast_obj)
-    tree.print()
-    g = graphviz.Digraph('ast', filename='images/ast')
-    tree.add_to_graph(g)
-    g.view()
+
+    # tree.print()
+    graph = GraphCreator('images/ast')
+    graph.add_to_graph(tree)
+    graph.view()
 
 
 if __name__ == "__main__":
     main()
-
-colors = {
-    'Const': 'cyan',
-    'Name': 'orange',
-
-}
