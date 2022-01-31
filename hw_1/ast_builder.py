@@ -27,9 +27,13 @@ class GraphCreator:
         self.graph = graphviz.Digraph(filename=filename)
 
     def get_label(self, tree):
+        """
+        label to be shown on graph
+        """
         name = tree.data['name']
         type_ = tree.data['type']
         node_obj = tree.data["node_obj"]
+        # node stands for variable/const and its name/value is needed
         if type_ == 'Name':
             type_ += f': {node_obj.id}'
         if type_ == 'arg':
@@ -44,6 +48,9 @@ class GraphCreator:
         return type_
 
     def get_color(self, tree):
+        """
+        selects color depending on the type of node
+        """
         name = tree.data['name']
         type_ = tree.data['type']
         colors_by_type = {
@@ -76,6 +83,9 @@ class GraphCreator:
         return 'lightgrey'
 
     def add_to_graph(self, tree):
+        """
+        add to graph tree's nodes and edges between father and child nodes
+        """
         label = self.get_label(tree)
         color = self.get_color(tree)
         self.graph.node(tree.tree_id, label=label, style='filled', color=color)
@@ -85,6 +95,9 @@ class GraphCreator:
             self.add_to_graph(child)
 
     def view(self):
+        """
+        creates pdf file for graph and launches it
+        """
         self.graph.view()
 
 
@@ -93,11 +106,14 @@ class Visitor(ast.NodeVisitor):
     class that visits AST's nodes and saves info about them into a tree structure
     """
     def generic_visit(self, node):
+        """
+        actions, when Visitor visits the node
+        """
         tree = Tree()
         tree.data['type'] = type(node).__name__
         tree.data['node_obj'] = node
         for field, value in ast.iter_fields(node):
-            if field == 'ctx':
+            if field == 'ctx':  # this stands for loading variable and is not needed
                 continue
             if isinstance(value, list):
                 child_tree = Tree()
@@ -112,9 +128,6 @@ class Visitor(ast.NodeVisitor):
                     subtree.data['name'] = field
                 tree.append(subtree)
         return tree
-
-    def visit_Load(self, node):
-        return None
 
 
 def main():
