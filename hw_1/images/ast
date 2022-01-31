@@ -1,0 +1,192 @@
+digraph {
+	0 [label=Module color=lightgrey style=filled]
+	0 -> 1
+	1 [label=body color=lightgrey style=filled]
+	1 -> 2
+	2 [label=FunctionDef color=lightgrey style=filled]
+	2 -> 3
+	3 [label="args:
+arguments" color=lightgrey style=filled]
+	3 -> 4
+	4 [label=posonlyargs color=dimgrey style=filled]
+	3 -> 5
+	5 [label=args color=lightgrey style=filled]
+	5 -> 6
+	6 [label="arg: n" color=orange style=filled]
+	3 -> 7
+	7 [label=kwonlyargs color=dimgrey style=filled]
+	3 -> 8
+	8 [label=kw_defaults color=dimgrey style=filled]
+	3 -> 9
+	9 [label=defaults color=dimgrey style=filled]
+	2 -> 10
+	10 [label=body color=lightgrey style=filled]
+	10 -> 11
+	11 [label=If color=green style=filled]
+	11 -> 12
+	12 [label="test:
+Compare" color=lightgrey style=filled]
+	12 -> 13
+	13 [label="left:
+Name: n" color=orange style=filled]
+	12 -> 14
+	14 [label=ops color=pink style=filled]
+	14 -> 15
+	15 [label=Eq color=red style=filled]
+	12 -> 16
+	16 [label=comparators color=lightgrey style=filled]
+	16 -> 17
+	17 [label="Constant: 1" color=darkorange style=filled]
+	11 -> 18
+	18 [label=body color=lightgrey style=filled]
+	18 -> 19
+	19 [label=Return color=dodgerblue style=filled]
+	19 -> 20
+	20 [label="value:
+List" color=lightgrey style=filled]
+	20 -> 21
+	21 [label=elts color=lightgrey style=filled]
+	21 -> 22
+	22 [label="Constant: 1" color=darkorange style=filled]
+	11 -> 23
+	23 [label=orelse color=dimgrey style=filled]
+	10 -> 24
+	24 [label=Assign color=orchid style=filled]
+	24 -> 25
+	25 [label=targets color=lightgrey style=filled]
+	25 -> 26
+	26 [label="Name: t" color=orange style=filled]
+	24 -> 27
+	27 [label="value:
+BinOp" color=pink style=filled]
+	27 -> 28
+	28 [label="left:
+List" color=lightgrey style=filled]
+	28 -> 29
+	29 [label=elts color=lightgrey style=filled]
+	29 -> 30
+	30 [label="Constant: 0" color=darkorange style=filled]
+	27 -> 31
+	31 [label="op:
+Mult" color=red style=filled]
+	27 -> 32
+	32 [label="right:
+Name: n" color=orange style=filled]
+	10 -> 33
+	33 [label=Assign color=orchid style=filled]
+	33 -> 34
+	34 [label=targets color=lightgrey style=filled]
+	34 -> 35
+	35 [label=Subscript color=hotpink style=filled]
+	35 -> 36
+	36 [label="value:
+Name: t" color=orange style=filled]
+	35 -> 37
+	37 [label="slice:
+Slice" color=lightgrey style=filled]
+	37 -> 38
+	38 [label="upper:
+Constant: 2" color=darkorange style=filled]
+	33 -> 39
+	39 [label="value:
+List" color=lightgrey style=filled]
+	39 -> 40
+	40 [label=elts color=lightgrey style=filled]
+	40 -> 41
+	41 [label="Constant: 1" color=darkorange style=filled]
+	40 -> 42
+	42 [label="Constant: 1" color=darkorange style=filled]
+	10 -> 43
+	43 [label=For color=green style=filled]
+	43 -> 44
+	44 [label="target:
+Name: i" color=orange style=filled]
+	43 -> 45
+	45 [label="iter:
+Call" color=lightgrey style=filled]
+	45 -> 46
+	46 [label="func:
+Name: range" color=deeppink style=filled]
+	45 -> 47
+	47 [label=args color=lightgrey style=filled]
+	47 -> 48
+	48 [label=BinOp color=pink style=filled]
+	48 -> 49
+	49 [label="left:
+Name: n" color=orange style=filled]
+	48 -> 50
+	50 [label="op:
+Sub" color=red style=filled]
+	48 -> 51
+	51 [label="right:
+Constant: 2" color=darkorange style=filled]
+	45 -> 52
+	52 [label=keywords color=dimgrey style=filled]
+	43 -> 53
+	53 [label=body color=lightgrey style=filled]
+	53 -> 54
+	54 [label=Assign color=orchid style=filled]
+	54 -> 55
+	55 [label=targets color=lightgrey style=filled]
+	55 -> 56
+	56 [label=Subscript color=hotpink style=filled]
+	56 -> 57
+	57 [label="value:
+Name: t" color=orange style=filled]
+	56 -> 58
+	58 [label="slice:
+BinOp" color=pink style=filled]
+	58 -> 59
+	59 [label="left:
+Name: i" color=orange style=filled]
+	58 -> 60
+	60 [label="op:
+Add" color=red style=filled]
+	58 -> 61
+	61 [label="right:
+Constant: 2" color=darkorange style=filled]
+	54 -> 62
+	62 [label="value:
+BinOp" color=pink style=filled]
+	62 -> 63
+	63 [label="left:
+Subscript" color=hotpink style=filled]
+	63 -> 64
+	64 [label="value:
+Name: t" color=orange style=filled]
+	63 -> 65
+	65 [label="slice:
+Name: i" color=orange style=filled]
+	62 -> 66
+	66 [label="op:
+Add" color=red style=filled]
+	62 -> 67
+	67 [label="right:
+Subscript" color=hotpink style=filled]
+	67 -> 68
+	68 [label="value:
+Name: t" color=orange style=filled]
+	67 -> 69
+	69 [label="slice:
+BinOp" color=pink style=filled]
+	69 -> 70
+	70 [label="left:
+Name: i" color=orange style=filled]
+	69 -> 71
+	71 [label="op:
+Add" color=red style=filled]
+	69 -> 72
+	72 [label="right:
+Constant: 1" color=darkorange style=filled]
+	43 -> 73
+	73 [label=orelse color=dimgrey style=filled]
+	10 -> 74
+	74 [label=Return color=dodgerblue style=filled]
+	74 -> 75
+	75 [label="value:
+Name: t" color=orange style=filled]
+	2 -> 76
+	76 [label=decorator_list color=dimgrey style=filled]
+	0 -> 77
+	77 [label=type_ignores color=dimgrey style=filled]
+}
