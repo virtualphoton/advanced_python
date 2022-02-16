@@ -24,6 +24,7 @@ class GraphCreator:
     class that builds and shows tree-graph
     """
     def __init__(self, filename):
+        self.path = filename
         self.graph = graphviz.Digraph(filename=filename)
 
     def get_label(self, tree):
@@ -100,6 +101,13 @@ class GraphCreator:
         """
         self.graph.view()
 
+    def save(self, extension='png'):
+        """
+        save graph as file
+        :param extension: file extension ('pdf, 'png', ...)
+        """
+        graphviz.render(engine='dot', filepath=self.path, format=extension)
+
 
 class Visitor(ast.NodeVisitor):
     """
@@ -138,7 +146,7 @@ def main():
     # tree.print()
     graph = GraphCreator('images/ast')
     graph.add_to_graph(tree)
-    graph.view()
+    graph.save('svg')
 
 
 if __name__ == "__main__":
