@@ -63,8 +63,8 @@ def find_collisions():
 
 def main():
     A, C = find_collisions()
-    print(A, C, sep='\n\n')
-    print(hash(A), hash(C))
+    # print(A, C, sep='\n\n')
+    # print(hash(A), hash(C))
     A.write_into_file('artifacts/hard/A.txt')
     C.write_into_file('artifacts/hard/C.txt')
     B = MyMatrix(get_rand(10))
