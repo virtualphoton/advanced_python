@@ -2,8 +2,8 @@ from copy import deepcopy
 import numpy as np
 
 
-class WriteInFileMixin:
-    def write_in_file(self, path):
+class WriteIntoFileMixin:
+    def write_into_file(self, path):
         with open(path, 'w') as f:
             f.write(str(self))
 
@@ -28,7 +28,7 @@ class MatrixStrMixin:
             return dim
 
 
-class Matrix(WriteInFileMixin, MatrixStrMixin):
+class Matrix(WriteIntoFileMixin, MatrixStrMixin):
     def __init__(self, arr, *, copy=False, skip_check=False):
         self._rows = len(arr)
         self._cols = len(arr[0])
@@ -58,6 +58,6 @@ if __name__ == '__main__':
     matr_1 = Matrix(np.random.randint(0, 10, (10, 10)))
     matr_2 = Matrix(np.random.randint(0, 10, (10, 10)))
     # print(matr_1, matr_2, sep='\n\n')
-    (matr_1 + matr_2).write_in_file('artifacts/easy/matrix+.txt')
-    (matr_1 * matr_2).write_in_file('artifacts/easy/matrix_mul.txt')
-    (matr_1 @ matr_2).write_in_file('artifacts/easy/matrix@.txt')
+    (matr_1 + matr_2).write_into_file('artifacts/easy/matrix+.txt')
+    (matr_1 * matr_2).write_into_file('artifacts/easy/matrix_mul.txt')
+    (matr_1 @ matr_2).write_into_file('artifacts/easy/matrix@.txt')

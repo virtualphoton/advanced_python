@@ -1,11 +1,11 @@
 import numpy as np
 import numbers
 
-from easy import MatrixStrMixin, WriteInFileMixin
+from easy import MatrixStrMixin, WriteIntoFileMixin
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
 
-class MyArr(NDArrayOperatorsMixin, MatrixStrMixin, WriteInFileMixin):
+class MyArr(NDArrayOperatorsMixin, MatrixStrMixin, WriteIntoFileMixin):
     def __init__(self, value):
         self.value = np.asarray(value)
 
@@ -38,6 +38,6 @@ if __name__ == '__main__':
     matr_1 = MyArr(np.random.randint(0, 10, (10, 10)))
     matr_2 = MyArr(np.random.randint(0, 10, (10, 10)))
     # print(matr_1, matr_2, sep='\n\n')
-    (matr_1 + matr_2).write_in_file('artifacts/medium/matrix+.txt')
-    (matr_1 * matr_2).write_in_file('artifacts/medium/matrix_mul.txt')
-    (matr_1 @ matr_2).write_in_file('artifacts/medium/matrix@.txt')
+    (matr_1 + matr_2).write_into_file('artifacts/medium/matrix+.txt')
+    (matr_1 * matr_2).write_into_file('artifacts/medium/matrix_mul.txt')
+    (matr_1 @ matr_2).write_into_file('artifacts/medium/matrix@.txt')
