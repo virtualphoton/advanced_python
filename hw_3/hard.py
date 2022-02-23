@@ -8,7 +8,7 @@ class MatrixHash:
         # somewhat resembles hash function for tuples
         # https://github.com/python/cpython/blob/24a549fcea682b8de88adf79924ccbc3a448cb0d/Objects/tupleobject.c#L348
         x = 345678  # just some number
-        p = 2**35  # upper bound for hash
+        p = 2 ** 35  # upper bound for hash
         mult = 1000003  # just another number
         add = self.value.shape[0] * self.value.shape[1]
         for row in self.value:
@@ -41,6 +41,12 @@ def get_rand(size, mx=10):
 
 
 def find_collisions():
+    """
+    Since hash function uses xor, hash function can be computed for some part of array ->
+    -> this hash is then inserted as the next element and xor gives 0.
+    To calculate hash for part of an array correctly, `shape` of array is changed
+    """
+
     class broken_array(list):
         def __new__(cls, arr):
             return list.__new__(broken_array, arr)
@@ -52,7 +58,7 @@ def find_collisions():
     matr = MyMatrix([])
 
     matr.value = arr1
-    arr1.append([hash(matr)] + [1] * (size - 1))
+    arr1.append([hash(matr)] + [1] * (size - 1))  # adding new row with first value being the partial hash
     A = MyMatrix(arr1)
 
     matr.value = arr2
