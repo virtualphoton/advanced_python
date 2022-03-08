@@ -38,7 +38,7 @@ def output_thread(pipe: mp.Pipe):
 
 def main():
     logging.basicConfig(filename='artifacts/hard.txt', level=logging.DEBUG,
-                        format='%(asctime)s %(message)s',
+                        format='%(asctime)s.%(msecs)03d %(message)s',
                         datefmt='%H:%M:%S')
     A_queue = mp.Queue()
     send_to_b, recv_from_a = mp.Pipe()

@@ -1,94 +1,94 @@
-23:21:00.335 Started integrating with 1 workers
-23:21:00.335 Started worker 0
-23:21:00.336 Ended worker 0
-23:21:00.337 Ended integrating with 1 workers, taken time: 0.999 ms
-23:21:00.337 Started integrating with 2 workers
-23:21:00.339 Started worker 0
-23:21:00.340 Ended worker 0
-23:21:00.341 Started worker 1
-23:21:00.341 Ended worker 1
-23:21:00.342 Ended integrating with 2 workers, taken time: 3.990 ms
-23:21:00.342 Started integrating with 3 workers
-23:21:00.343 Started worker 0
-23:21:00.344 Ended worker 0
-23:21:00.344 Started worker 1
-23:21:00.344 Ended worker 1
-23:21:00.344 Started worker 2
-23:21:00.345 Ended worker 2
-23:21:00.346 Started worker 3
-23:21:00.346 Ended worker 3
-23:21:00.346 Ended integrating with 3 workers, taken time: 3.991 ms
-23:21:00.346 Started integrating with 4 workers
-23:21:00.348 Started worker 0
-23:21:00.349 Ended worker 0
-23:21:00.350 Started worker 1
-23:21:00.350 Started worker 2
-23:21:00.350 Started worker 3
-23:21:00.350 Ended worker 1
-23:21:00.350 Ended worker 2
-23:21:00.351 Ended worker 3
-23:21:00.351 Ended integrating with 4 workers, taken time: 3.988 ms
-23:21:00.351 Started integrating with 5 workers
-23:21:00.351 Started worker 0
-23:21:00.352 Ended worker 0
-23:21:00.352 Started worker 1
-23:21:00.353 Started worker 2
-23:21:00.354 Started worker 3
-23:21:00.354 Ended worker 1
-23:21:00.355 Started worker 4
-23:21:00.355 Ended worker 2
-23:21:00.355 Ended worker 3
-23:21:00.356 Ended worker 4
-23:21:00.357 Ended integrating with 5 workers, taken time: 5.984 ms
-23:21:00.357 Started integrating with 6 workers
-23:21:00.358 Started worker 0
-23:21:00.359 Ended worker 0
-23:21:00.359 Started worker 1
-23:21:00.360 Started worker 2
-23:21:00.360 Ended worker 1
-23:21:00.361 Started worker 4
-23:21:00.361 Started worker 3
-23:21:00.361 Ended worker 3
-23:21:00.362 Ended worker 2
-23:21:00.362 Ended worker 4
-23:21:00.363 Started worker 5
-23:21:00.363 Started worker 6
-23:21:00.364 Ended worker 5
-23:21:00.364 Ended worker 6
-23:21:00.365 Ended integrating with 6 workers, taken time: 7.979 ms
-23:21:00.365 Started integrating with 7 workers
-23:21:00.366 Started worker 0
-23:21:00.367 Ended worker 0
-23:21:00.367 Started worker 1
-23:21:00.368 Started worker 2
-23:21:00.368 Ended worker 1
-23:21:00.369 Started worker 3
-23:21:00.369 Ended worker 2
-23:21:00.370 Started worker 4
-23:21:00.370 Started worker 5
-23:21:00.370 Ended worker 3
-23:21:00.371 Started worker 6
-23:21:00.371 Started worker 7
-23:21:00.372 Ended worker 4
-23:21:00.372 Ended worker 5
-23:21:00.372 Ended worker 6
-23:21:00.373 Ended worker 7
-23:21:00.373 Ended integrating with 7 workers, taken time: 7.979 ms
-23:21:00.374 Started integrating with 8 workers
-23:21:00.374 Started worker 0
-23:21:00.375 Ended worker 0
-23:21:00.375 Started worker 1
-23:21:00.375 Ended worker 1
-23:21:00.376 Started worker 2
-23:21:00.376 Started worker 3
-23:21:00.377 Ended worker 2
-23:21:00.377 Started worker 4
-23:21:00.377 Ended worker 3
-23:21:00.377 Started worker 5
-23:21:00.378 Started worker 6
-23:21:00.378 Ended worker 4
-23:21:00.378 Started worker 7
-23:21:00.378 Ended worker 5
-23:21:00.379 Ended worker 6
-23:21:00.380 Ended worker 7
-23:21:00.380 Ended integrating with 8 workers, taken time: 5.975 ms
+23:25:19.330 Started integrating with 1 workers
+23:25:19.332 Started worker 0
+23:25:19.332 Ended worker 0
+23:25:19.333 Ended integrating with 1 workers, taken time: 1.977 ms
+23:25:19.333 Started integrating with 2 workers
+23:25:19.334 Started worker 0
+23:25:19.335 Ended worker 0
+23:25:19.335 Started worker 1
+23:25:19.336 Ended worker 1
+23:25:19.336 Ended integrating with 2 workers, taken time: 3.000 ms
+23:25:19.336 Started integrating with 3 workers
+23:25:19.337 Started worker 0
+23:25:19.337 Ended worker 0
+23:25:19.337 Started worker 1
+23:25:19.338 Started worker 2
+23:25:19.338 Ended worker 1
+23:25:19.338 Started worker 3
+23:25:19.338 Ended worker 3
+23:25:19.339 Ended worker 2
+23:25:19.339 Ended integrating with 3 workers, taken time: 2.984 ms
+23:25:19.339 Started integrating with 4 workers
+23:25:19.340 Started worker 0
+23:25:19.340 Ended worker 0
+23:25:19.341 Started worker 1
+23:25:19.341 Started worker 2
+23:25:19.342 Ended worker 1
+23:25:19.342 Started worker 3
+23:25:19.342 Ended worker 2
+23:25:19.342 Ended worker 3
+23:25:19.343 Ended integrating with 4 workers, taken time: 3.993 ms
+23:25:19.343 Started integrating with 5 workers
+23:25:19.344 Started worker 0
+23:25:19.344 Ended worker 0
+23:25:19.345 Started worker 1
+23:25:19.346 Started worker 2
+23:25:19.346 Ended worker 2
+23:25:19.346 Started worker 4
+23:25:19.347 Ended worker 1
+23:25:19.348 Started worker 3
+23:25:19.348 Ended worker 4
+23:25:19.349 Ended worker 3
+23:25:19.349 Ended integrating with 5 workers, taken time: 5.980 ms
+23:25:19.349 Started integrating with 6 workers
+23:25:19.350 Started worker 0
+23:25:19.350 Ended worker 0
+23:25:19.351 Started worker 1
+23:25:19.352 Ended worker 1
+23:25:19.354 Started worker 2
+23:25:19.356 Started worker 3
+23:25:19.357 Started worker 4
+23:25:19.358 Ended worker 4
+23:25:19.358 Started worker 5
+23:25:19.359 Ended worker 5
+23:25:19.360 Ended worker 3
+23:25:19.363 Ended worker 2
+23:25:19.365 Started worker 6
+23:25:19.365 Ended worker 6
+23:25:19.367 Ended integrating with 6 workers, taken time: 17.952 ms
+23:25:19.367 Started integrating with 7 workers
+23:25:19.369 Started worker 0
+23:25:19.370 Ended worker 0
+23:25:19.370 Started worker 1
+23:25:19.370 Ended worker 1
+23:25:19.371 Started worker 2
+23:25:19.371 Ended worker 2
+23:25:19.371 Started worker 3
+23:25:19.371 Ended worker 3
+23:25:19.372 Started worker 4
+23:25:19.372 Ended worker 4
+23:25:19.373 Started worker 5
+23:25:19.373 Ended worker 5
+23:25:19.373 Started worker 6
+23:25:19.373 Ended worker 6
+23:25:19.373 Started worker 7
+23:25:19.373 Ended worker 7
+23:25:19.374 Ended integrating with 7 workers, taken time: 6.984 ms
+23:25:19.375 Started integrating with 8 workers
+23:25:19.375 Started worker 0
+23:25:19.376 Ended worker 0
+23:25:19.377 Started worker 1
+23:25:19.377 Started worker 2
+23:25:19.377 Started worker 3
+23:25:19.378 Ended worker 1
+23:25:19.379 Ended worker 2
+23:25:19.379 Started worker 4
+23:25:19.380 Ended worker 3
+23:25:19.381 Started worker 5
+23:25:19.381 Ended worker 4
+23:25:19.382 Started worker 6
+23:25:19.382 Started worker 7
+23:25:19.382 Ended worker 5
+23:25:19.383 Ended worker 6
+23:25:19.383 Ended worker 7
+23:25:19.384 Ended integrating with 8 workers, taken time: 8.974 ms
