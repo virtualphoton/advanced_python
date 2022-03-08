@@ -40,7 +40,7 @@ def integrate(f, a, b, *, n_jobs=1, n_iter=1000, Executor=cf.ThreadPoolExecutor)
 def main():
     cpu_num = 4
     for n_jobs in range(1, cpu_num*2 + 1):
-        print(integrate(cos, 0, pi/2, n_jobs=n_jobs))
+        integrate(cos, 0, pi/2, n_jobs=n_jobs)
 
 
 if __name__ == '__main__':
