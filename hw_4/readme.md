@@ -1,0 +1,1 @@
+in `medium.py`, sending empty string will end the program
