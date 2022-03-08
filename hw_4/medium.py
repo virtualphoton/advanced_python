@@ -33,14 +33,20 @@ def integrate(f, a, b, *, n_jobs=1, n_iter=1000, Executor=cf.ThreadPoolExecutor)
         ends[-1] = min(ends[-1], n_iter)
         total = sum(list(executor.map(sum_part, zip(ends[:-1], ends[1:], range(len(ends) - 1)))))
 
-    logging.info(f"Ended integrating with {n_jobs} workers, taken time: {(time() - start) * 1000:.3f} ms")
-    return total
+    elapsed = time() - start
+    logging.info(f"Ended integrating with {n_jobs} workers, taken time: {elapsed * 1000:.3f} ms")
+    return total, elapsed
 
 
 def main():
     cpu_num = 4
+    elapsed = []
     for n_jobs in range(1, cpu_num*2 + 1):
-        integrate(cos, 0, pi/2, n_jobs=n_jobs)
+        _, t = integrate(cos, 0, pi/2, n_jobs=n_jobs)
+        elapsed.append((n_jobs, t))
+    with open('artifacts/medium_comparison.txt', 'w') as f:
+        f.write('n_jobs\t time(ms)\n')
+        f.write('\n'.join('{}\t{:.3f}'.format(i, j*1000) for i, j in elapsed))
 
 
 if __name__ == '__main__':

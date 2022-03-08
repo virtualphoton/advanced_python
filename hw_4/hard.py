@@ -2,6 +2,7 @@ import multiprocessing as mp
 from multiprocessing.connection import PipeConnection
 from threading import Thread
 from time import sleep
+import logging
 
 STOP = b''
 
@@ -15,7 +16,7 @@ def child_a(queue: mp.Queue, pipe: PipeConnection):
 
 def child_b(pipe_a: PipeConnection, pipe_main: PipeConnection):
     rot13 = str.maketrans('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
-                'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm')
+                          'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm')
     for recv in iter(pipe_a.recv, STOP):
         s = recv.translate(rot13)
         pipe_main.send(s)
@@ -24,16 +25,21 @@ def child_b(pipe_a: PipeConnection, pipe_main: PipeConnection):
 
 def input_thread(queue: mp.Queue):
     for s in iter(input, ''):
+        logging.info(f'input: {s}')
         queue.put(s)
     queue.put(STOP)
 
 
 def output_thread(pipe: mp.Pipe):
     for recv in iter(pipe.recv, STOP):
+        logging.info(f'output: {recv}')
         print(recv)
 
 
 def main():
+    logging.basicConfig(filename='artifacts/hard.txt', level=logging.DEBUG,
+                        format='%(asctime)s %(message)s',
+                        datefmt='%H:%M:%S')
     A_queue = mp.Queue()
     send_to_b, recv_from_a = mp.Pipe()
     send_to_main, recv_from_b = mp.Pipe()
