@@ -1,0 +1,5 @@
+find 60000 first fibonacci numbers, 10 times:
+synchronous - 2.8250632286071777 seconds
+multithreading - 2.5980117321014404 seconds
+multiprocessing with 10 processes - 18.339938402175903 seconds
+multiprocessing with 3 processes - 10.644217014312744 seconds
